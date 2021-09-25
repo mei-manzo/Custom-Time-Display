@@ -1,5 +1,5 @@
-from django.conf.urls import url
+from django.conf.urls import url, path
 from . import views           
 urlpatterns = [
-    url(r'^$', views.index)     
+    path('', views.index),    
 ]
