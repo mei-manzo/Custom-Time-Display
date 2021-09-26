@@ -36,3 +36,7 @@ def check_name(request):
         name = False
     return redirect('/home')
 
+def logout(request):
+    request.session.flush()
+    return render (request, "auth0_test.html")
+
