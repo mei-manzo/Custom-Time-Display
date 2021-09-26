@@ -46,7 +46,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static '.css' %}">   
+    <link rel="stylesheet" href="{% static 'cover.css' %}">   
     
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
@@ -89,12 +89,20 @@
     <br>
     <br>
     <main class="px-3">
-        <h1>Name: {{  recent.name }}</h1>
-        <h1>Time Display: {{ today }}</h1>
-        <p class="lead"></p>
-        <p class="lead">
-        <!-- <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-black">New Color</a>
-        </p> -->
+        {% if color == "red" %}
+            <h1 id="red">Name: {{  recent.name }}</h1>
+        {% elif color == "yellow" %}
+            <h1 id="yellow">Name: {{  recent.name }}</h1>
+        {% elif color == "blue" %}
+            <h1 id="blue">Name: {{  recent.name }}</h1>
+        {% elif color == "green" %}
+            <h1 id="green">Name: {{  recent.name }}</h1>
+        {% elif color == "purple" %}
+            <h1 id="purple">Name: {{  recent.name }}</h1>
+        {% else %}
+            <h1 id="purple">Name: {{  recent.name }}</h1>
+        {% endif %}
+        <h1 id= "{{color }}">Time Display: {{ today }}</h1>
     </main>
 
     <footer class="mt-auto text-white-50">
