@@ -4,18 +4,20 @@ from datetime import date
 import datetime
 import random
 
-colors = ["red", "yellow", "blue", "green", "purple"]
+colors = ["blue","yellow", "red", "green", "purple"]
 
 def index(request):
     today = datetime.datetime.now()
     color = "yellow"
     recent_name = Name.objects.last() #grabs most recent name  
     rand_color = random.randint(0, len(colors)-1)
+    c_index = (colors[rand_color])
     context = {
         "today": today,
         "color": color,
         "recent": recent_name,
-        "color": rand_color,
+        "random": rand_color,
+        "color": c_index,
     }
     return render(request, "index.html", context)
 

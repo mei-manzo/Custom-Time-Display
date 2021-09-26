@@ -89,21 +89,20 @@
     <br>
     <br>
     <main class="px-3">
-        {% if color == "red" %}
-            <h1 id="red">Name: {{  recent.name }}</h1>
+        {% if color == "purple" %}
+            <h1 id="purple">Name: {{  recent.name }}</h1>
         {% elif color == "yellow" %}
             <h1 id="yellow">Name: {{  recent.name }}</h1>
         {% elif color == "blue" %}
             <h1 id="blue">Name: {{  recent.name }}</h1>
         {% elif color == "green" %}
             <h1 id="green">Name: {{  recent.name }}</h1>
-        {% elif color == "purple" %}
-            <h1 id="purple">Name: {{  recent.name }}</h1>
-        {% else %}
-            <h1 id="purple">Name: {{  recent.name }}</h1>
+        {% elif color == "red" %}
+            <h1 id="red">Name: {{  recent.name }}</h1>
         {% endif %}
-        <h1 id= "{{color }}">Time Display: {{ today }}</h1>
+        <h1 id= "">Time Display: {{ today }}</h1>
     </main>
+    <p>{{ random }}</p>
 
     <footer class="mt-auto text-white-50">
     </footer>
