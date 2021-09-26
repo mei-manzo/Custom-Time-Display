@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import environ
+# from dotenv import load_dotenv
+# import environ
 
 #added in environ code for debugging purposes
 
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 
 # ENV_FILE = find_dotenv()
 # if ENV_FILE:
@@ -42,8 +43,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'CustomTimeDisplay', #added this in
-    'apps.auth0login',
+    # 'CustomTimeDisplay', #added this in
+    # 'apps.auth0login',
+    'auth0login',
     'social_django',
     'apps.color_app',
     'django.contrib.admin',
@@ -52,6 +54,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'auth0login',
+    # 'core',
+
 ]
 
 MIDDLEWARE = [
@@ -152,10 +157,10 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 #     'django.contrib.auth.backends.ModelBackend'
 # }
 
-AUTHENTICATION_BACKENDS = [
-    "CustomTimeDisplay.auth0backend.Auth0",
+AUTHENTICATION_BACKENDS = {
+    "auth0login.auth0backend.Auth0",
     "django.contrib.auth.backends.ModelBackend",
-]
+}
 
 # webappexample\settings.py
 # Configure the login, redirect login and redirect logout URLs as set below. The LOGIN_URL ends with auth0 as it needs to match the name property of the custom backend defined above.
