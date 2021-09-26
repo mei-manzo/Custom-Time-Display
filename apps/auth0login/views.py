@@ -1,16 +1,5 @@
-# from django.shortcuts import render
-
 # # Create your views here.
 # auth0login/views.py
-
-# from django.shortcuts import render, redirect
-
-# def index(request):
-#     user = request.user
-#     if user.is_authenticated:
-#         return redirect(dashboard)
-#     else:
-#         return render(request, 'index.html')
 
 # auth0login/views.py
 
@@ -22,6 +11,13 @@ from django.contrib.auth import logout as log_out
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
+
+def index(request):
+    user = request.user
+    if user.is_authenticated:
+        return redirect(dashboard)
+    else:
+        return render(request, 'index.html')
 
 
 @login_required

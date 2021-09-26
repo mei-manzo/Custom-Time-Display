@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.auth0login',
     'social_django',
     'apps.color_app',
     'django.contrib.admin',
@@ -135,7 +136,7 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 # webappexample\settings.py
 
 AUTHENTICATION_BACKENDS = {
-    'color_app.auth0backend.Auth0', #app name, is this correct?
+    'auth0login.auth0backend.Auth0', #app name, is this correct?
     'django.contrib.auth.backends.ModelBackend'
 }
 
