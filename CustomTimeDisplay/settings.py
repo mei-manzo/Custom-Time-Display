@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'social_django',
     'apps.color_app',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -119,3 +120,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'melandalin.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'jaqVMmdFMeEY4J5XPN6P25z5Q2pG22qh'
+SOCIAL_AUTH_AUTH0_SECRET = 'nX6bjRUlLqzwglrOzRdI99ZG5-uLW6VV_yAqKJUB2nw6Ny7Y12ipx-tnQBluBdPi'
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+# webappexample\settings.py
+
+AUTHENTICATION_BACKENDS = {
+    'color_app.auth0backend.Auth0', #app name, is this correct?
+    'django.contrib.auth.backends.ModelBackend'
+}
+
+# webappexample\settings.py
+# Configure the login, redirect login and redirect logout URLs as set below. The LOGIN_URL ends with auth0 as it needs to match the name property of the custom backend defined above.
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/dashboard'
