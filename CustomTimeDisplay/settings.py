@@ -136,7 +136,7 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 # webappexample\settings.py
 
 AUTHENTICATION_BACKENDS = {
-    'CustomTimeDisplay.auth0backend.Auth0',
+    'CustomTimeDisplay.apps.auth0.auth0backend.Auth0',
     'django.contrib.auth.backends.ModelBackend'
 }
 
