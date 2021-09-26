@@ -11,6 +11,17 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+#added in environ code for debugging purposes
+
+env = environ.Env()
+environ.Env.read_env()
+
+# ENV_FILE = find_dotenv()
+# if ENV_FILE:
+#     load_dotenv(ENV_FILE)
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +42,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'CustomTimeDisplay', #added this in
     'apps.auth0login',
     'social_django',
     'apps.color_app',
@@ -135,12 +147,18 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 
 # webappexample\settings.py
 
-AUTHENTICATION_BACKENDS = {
-    'CustomTimeDisplay.apps.auth0.auth0backend.Auth0',
-    'django.contrib.auth.backends.ModelBackend'
-}
+# AUTHENTICATION_BACKENDS = {
+#     'CustomTimeDisplay.auth0backend.Auth0',
+#     'django.contrib.auth.backends.ModelBackend'
+# }
+
+AUTHENTICATION_BACKENDS = [
+    "CustomTimeDisplay.auth0backend.Auth0",
+    "django.contrib.auth.backends.ModelBackend",
+]
 
 # webappexample\settings.py
 # Configure the login, redirect login and redirect logout URLs as set below. The LOGIN_URL ends with auth0 as it needs to match the name property of the custom backend defined above.
 LOGIN_URL = '/login/auth0'
 LOGIN_REDIRECT_URL = '/dashboard'
+
