@@ -12,6 +12,9 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
 
+from .models import *
+from apps.color_app.models import *
+
 def index(request):
     user = request.user
     if user.is_authenticated:
@@ -31,7 +34,7 @@ def dashboard(request):
         'email': auth0user.extra_data['email'],
     }
 
-    return render(request, 'dashboard.html', {
+    return render(request, 'index_copy.html', {
         'auth0User': auth0user,
         'userdata': json.dumps(userdata, indent=4)
     })
@@ -42,3 +45,10 @@ def logout(request):
     logout_url = 'https://%s/v2/logout?client_id=%s&%s' % \
                 (settings.SOCIAL_AUTH_AUTH0_DOMAIN, settings.SOCIAL_AUTH_AUTH0_KEY, return_to)
     return HttpResponseRedirect(logout_url)
+
+def profile_moved(request):
+    number_of_names = Name.objects.count()
+    context = {
+        "number":number_of_names,
+    }
+    return render(request, "profile.html", context)
